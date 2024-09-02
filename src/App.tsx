@@ -4,17 +4,17 @@ import { retrieveLaunchParams } from '@telegram-apps/sdk';
 
 
 function App() {
-  const [telegraminfo, setTelegraminfo] = useState(null);
+  const [telegramInfo, setTelegramInfo] = useState<unknown>("");
   useEffect(() => {
     (async () => {
       console.log({ retrieveLaunchParams })
-      setTelegraminfo(retrieveLaunchParams);
+      setTelegramInfo(retrieveLaunchParams);
     })();
   }, [])
 
   return (
     <>
-      <div className="text-white">{telegraminfo.toString()}</div>
+      <div className="text-white">{telegramInfo?.toString()}</div>
       <WhackAMole />
     </>
   )
