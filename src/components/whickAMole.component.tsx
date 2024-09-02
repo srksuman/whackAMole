@@ -1,7 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { PlayCircle, RotateCcw, Trophy, Timer } from "lucide-react";
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
+
+// Import sound effects
+import hitSound from '../assets/sound/miss.mp3';
+import missSound from '../assets/sound/hit.mp3';
 
 type GameState = "setup" | "playing" | "finished" | "leaderboard";
 type HoleState = "normal" | "active" | "hit" | "miss";
@@ -39,7 +43,13 @@ const WhackAMole: React.FC = () => {
     const [leaderboardFilter, setLeaderboardFilter] = useState("all");
     const [countryFilter, setCountryFilter] = useState("all");
 
+    const hitSoundRef = useRef<HTMLAudioElement | null>(null);
+    const missSoundRef = useRef<HTMLAudioElement | null>(null);
+
     useEffect(() => {
+        hitSoundRef.current = new Audio(hitSound);
+        missSoundRef.current = new Audio(missSound);
+
         const storedName = localStorage.getItem("playerName");
         const storedCountry = localStorage.getItem("playerCountry");
         if (storedName) setPlayerName(storedName);
@@ -121,12 +131,31 @@ const WhackAMole: React.FC = () => {
                 moleTimer = setTimeout(updateMoles, moleAppearanceRate);
             };
             updateMoles();
-        }
 
-        return () => {
-            clearInterval(timer);
-            clearTimeout(moleTimer);
-        };
+            // Ensure at least one mole is always visible
+            const ensureMoleVisible = setInterval(() => {
+                setMoles((prevMoles) => {
+                    if (!prevMoles.some(mole => mole)) {
+                        const newMoles = [...prevMoles];
+                        const randomIndex = Math.floor(Math.random() * newMoles.length);
+                        newMoles[randomIndex] = true;
+                        setHoleStates((prev) => {
+                            const newStates = [...prev];
+                            newStates[randomIndex] = "active";
+                            return newStates;
+                        });
+                        return newMoles;
+                    }
+                    return prevMoles;
+                });
+            }, 1000);
+
+            return () => {
+                clearInterval(timer);
+                clearTimeout(moleTimer);
+                clearInterval(ensureMoleVisible);
+            };
+        }
     }, [gameState, timeLeft, moleAppearanceRate, showRandomMole, updateLeaderboard]);
 
     const startGame = () => {
@@ -169,6 +198,7 @@ const WhackAMole: React.FC = () => {
                 }, 300);
                 return newStates;
             });
+            hitSoundRef.current?.play();
         } else {
             setMisses((prev) => prev + 1);
             setHoleStates((prev) => {
@@ -183,6 +213,7 @@ const WhackAMole: React.FC = () => {
                 }, 300);
                 return newStates;
             });
+            missSoundRef.current?.play();
         }
     };
 
