@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { PlayCircle, RotateCcw, Trophy, Timer, Hammer } from "lucide-react";
+import { PlayCircle, RotateCcw, Trophy, Timer } from "lucide-react";
 import Select from 'react-select';
 import countryList from 'react-select-country-list';
 
@@ -36,6 +36,8 @@ const WhackAMole: React.FC = () => {
     const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
     const [selectedTime, setSelectedTime] = useState(30);
     const [countryOptions, setCountryOptions] = useState<CountryOption[]>(countryList().getData());
+    const [leaderboardFilter, setLeaderboardFilter] = useState("all");
+    const [countryFilter, setCountryFilter] = useState("all");
 
     useEffect(() => {
         const storedName = localStorage.getItem("playerName");
@@ -188,6 +190,16 @@ const WhackAMole: React.FC = () => {
         setPlayerCountry(selectedOption ? selectedOption.label : '');
     };
 
+    const filteredLeaderboard = leaderboard.filter((entry) => {
+        if (leaderboardFilter === "all") return true;
+        return entry.time.toString() === leaderboardFilter;
+    }).filter((entry) => {
+        if (countryFilter === "all") return true;
+        return entry.country === countryFilter;
+    });
+
+    const uniqueCountries = Array.from(new Set(leaderboard.map(entry => entry.country)));
+
     return (
         <div className="whack-a-mole">
             <div className="game-container">
@@ -257,8 +269,30 @@ const WhackAMole: React.FC = () => {
                 {gameState === "leaderboard" && (
                     <div className="leaderboard">
                         <h2>Leaderboard</h2>
+                        <div className="leaderboard-filters">
+                            <select
+                                value={leaderboardFilter}
+                                onChange={(e) => setLeaderboardFilter(e.target.value)}
+                                className="select"
+                            >
+                                <option value="all">All Times</option>
+                                <option value="30">30 seconds</option>
+                                <option value="60">60 seconds</option>
+                                <option value="90">90 seconds</option>
+                            </select>
+                            <select
+                                value={countryFilter}
+                                onChange={(e) => setCountryFilter(e.target.value)}
+                                className="select"
+                            >
+                                <option value="all">All Countries</option>
+                                {uniqueCountries.map(country => (
+                                    <option key={country} value={country}>{country}</option>
+                                ))}
+                            </select>
+                        </div>
                         <ul>
-                            {leaderboard.map((entry, index) => (
+                            {filteredLeaderboard.map((entry, index) => (
                                 <li key={index} className="leaderboard-entry">
                                     <span className="entry-rank">{index + 1}</span>
                                     <span className="entry-name">{entry.name}</span>

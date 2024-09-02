@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any*/
 import React, { useState } from 'react';
 import { Circle, Hammer, Target, X } from 'lucide-react';
 import { HoleState } from '../types/game.type';
 
 interface GameProps {
     score: number;
-    setScore: (score: number) => void;
+    setScore: React.Dispatch<React.SetStateAction<number>>;
     misses: number;
-    setMisses: (misses: number) => void;
+    setMisses: React.Dispatch<React.SetStateAction<number>>;
     moles: boolean[];
     setMoles: (moles: boolean[]) => void;
     holeStates: HoleState[];
-    setHoleStates: (states: HoleState[]) => void;
+    setHoleStates: React.Dispatch<React.SetStateAction<HoleState[]>>;
     hideMole: (index: number) => void;
 }
 
@@ -32,8 +32,8 @@ const Game: React.FC<GameProps> = ({
         setHitAnimation(index);
         setTimeout(() => setHitAnimation(null), 300);
 
-        setHoleStates((prev: any) => {
-            const newStates = [...prev];
+        setHoleStates((prev: HoleState[]) => {
+            const newStates: HoleState[] = [...prev];
             if (moles[index]) {
                 setScore((prev: number) => prev + 1);
                 hideMole(index);

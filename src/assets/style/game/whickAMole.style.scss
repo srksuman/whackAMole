@@ -13,369 +13,369 @@ $hole-color: #2c3e50;
 
 // Mixins
 @mixin flex-center {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @mixin button-style {
-    padding: 0.75rem 1.5rem !important;
-    border-radius: 50px !important;
-    font-weight: bold !important;
-    transition: all 0.3s ease !important;
-    cursor: pointer !important;
-    border: none !important;
-    font-family: "Roboto", sans-serif !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.5rem !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 
     &:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     &:active {
-        transform: translateY(0) !important;
+        transform: translateY(0);
     }
 }
 
 body {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-family: "Roboto", sans-serif !important;
-    background-color: $bg-color !important;
-    color: $text-color !important;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: $bg-color;
+    color: $text-color;
 }
 
 .whack-a-mole {
     @include flex-center;
-    flex-direction: column !important;
-    min-height: 100vh !important;
-    background: linear-gradient(135deg, $bg-color, $primary-color) !important;
-    padding: 1rem !important;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, $bg-color, $primary-color);
+    padding: 1rem;
 }
 
 .game-container {
     @include flex-center;
-    flex-direction: column !important;
-    padding: 1rem !important;
-    background-color: rgba($secondary-color, 0.8) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
-    width: 100% !important;
-    max-width: 400px !important;
-    margin-bottom: 1rem !important;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: rgba($secondary-color, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1rem;
 }
 
 .game-title {
-    font-family: "Bangers", cursive !important;
-    font-size: 2.5rem !important;
-    margin-bottom: 1rem !important;
-    color: $accent-color !important;
-    text-shadow: 2px 2px 0 $secondary-color !important;
-    letter-spacing: 2px !important;
+    font-family: "Bangers", cursive;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $accent-color;
+    text-shadow: 2px 2px 0 $secondary-color;
+    letter-spacing: 2px;
 }
 
 .setup {
     @include flex-center;
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    width: 100% !important;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
 }
 
 .input,
 .select,
 .country-select__control {
-    width: 100% !important;
-    padding: 0.75rem !important;
-    border-radius: 25px !important;
-    border: 2px solid $accent-color !important;
-    font-size: 1rem !important;
-    background-color: rgba($primary-color, 0.8) !important;
-    color: $text-color !important;
-    transition: all 0.3s ease !important;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 25px;
+    border: 2px solid $accent-color;
+    font-size: 1rem;
+    background-color: rgba($primary-color, 0.8);
+    color: $text-color;
+    transition: all 0.3s ease;
 
     &:focus {
-        outline: none !important;
-        box-shadow: 0 0 0 3px rgba($accent-color, 0.5) !important;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($accent-color, 0.5);
     }
 }
 
 .select {
-    appearance: none !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e94560' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right 1rem center !important;
-    background-size: 1em !important;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e94560' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
 }
 
 .country-select {
-    width: 100% !important;
+    width: 100%;
 
     &__control {
-        background-color: rgba($primary-color, 0.8) !important;
-        border-color: $accent-color !important;
+        background-color: rgba($primary-color, 0.8);
+        border-color: $accent-color;
     }
 
     &__menu {
-        background-color: $primary-color !important;
+        background-color: $primary-color;
     }
 
     &__option {
-        background-color: $primary-color !important;
-        color: $text-color !important;
+        background-color: $primary-color;
+        color: $text-color;
 
         &--is-focused {
-            background-color: rgba($accent-color, 0.2) !important;
+            background-color: rgba($accent-color, 0.2);
         }
 
         &--is-selected {
-            background-color: $accent-color !important;
+            background-color: $accent-color;
         }
     }
 
     &__single-value {
-        color: $text-color !important;
+        color: $text-color;
     }
 }
 
 .button {
     @include button-style;
-    background-color: $accent-color !important;
-    color: $text-color !important;
-    font-size: 1rem !important;
-    width: 100% !important;
+    background-color: $accent-color;
+    color: $text-color;
+    font-size: 1rem;
+    width: 100%;
 
     &-icon {
-        width: 1.25rem !important;
-        height: 1.25rem !important;
+        width: 1.25rem;
+        height: 1.25rem;
     }
 }
 
 .game-board {
-    width: 100% !important;
+    width: 100%;
 }
 
 .holes-container {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.5rem !important;
-    margin-bottom: 1rem !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .hole {
-    width: 100% !important;
-    aspect-ratio: 1 !important;
-    background-color: $hole-color !important;
-    border-radius: 50% !important;
-    overflow: hidden !important;
-    position: relative !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: $hole-color;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
     &.active {
-        background-color: darken($hole-color, 10%) !important;
+        background-color: darken($hole-color, 10%);
     }
 
     &.hit {
-        background-color: #4caf50 !important;
+        background-color: #4caf50;
     }
 
     &.miss {
-        background-color: #f44336 !important;
+        background-color: #f44336;
     }
 }
 
 .mole {
-    width: 80% !important;
-    height: 80% !important;
-    background-color: $mole-color !important;
-    border-radius: 50% !important;
-    position: absolute !important;
-    bottom: 100% !important;
-    left: 10% !important;
-    transition: bottom 0.3s ease-out !important;
+    width: 80%;
+    height: 80%;
+    background-color: $mole-color;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100%;
+    left: 10%;
+    transition: bottom 0.3s ease-out;
 
     .hole.active & {
-        bottom: 10% !important;
+        bottom: 10%;
     }
 }
 
 .game-info {
-    display: flex !important;
-    justify-content: space-between !important;
-    font-size: 0.9rem !important;
-    margin-top: 0.5rem !important;
-    flex-wrap: wrap !important;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .score,
 .misses,
 .time-left {
-    background-color: rgba($primary-color, 0.8) !important;
-    padding: 0.5rem 0.75rem !important;
-    border-radius: 25px !important;
-    margin: 0.25rem !important;
-    flex-grow: 1 !important;
-    text-align: center !important;
+    background-color: rgba($primary-color, 0.8);
+    padding: 0.5rem 0.75rem;
+    border-radius: 25px;
+    margin: 0.25rem;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .finished {
-    text-align: center !important;
+    text-align: center;
 
     h2 {
-        font-size: 2rem !important;
-        margin-bottom: 0.5rem !important;
-        color: $accent-color !important;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: $accent-color;
     }
 
     .final-score {
-        font-size: 1.5rem !important;
-        margin-bottom: 1rem !important;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 }
 
 .leaderboard {
-    width: 100% !important;
+    width: 100%;
 
     h2 {
-        font-size: 2rem !important;
-        margin-bottom: 1rem !important;
-        color: $accent-color !important;
-        text-align: center !important;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: $accent-color;
+        text-align: center;
     }
 
     .leaderboard-filters {
-        display: flex !important;
-        justify-content: space-between !important;
-        margin-bottom: 1rem !important;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
 
         select {
-            flex-basis: 48% !important;
+            flex-basis: 48%;
         }
     }
 
     ul {
-        list-style-type: none !important;
-        padding: 0 !important;
+        list-style-type: none;
+        padding: 0;
     }
 
     .leaderboard-entry {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        background-color: rgba($primary-color, 0.8) !important;
-        padding: 0.5rem 0.75rem !important;
-        border-radius: 15px !important;
-        margin-bottom: 0.5rem !important;
-        font-size: 0.9rem !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba($primary-color, 0.8);
+        padding: 0.5rem 0.75rem;
+        border-radius: 15px;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
 
         .entry-rank {
-            font-weight: bold !important;
-            color: $accent-color !important;
-            margin-right: 0.5rem !important;
-            flex-basis: 10% !important;
+            font-weight: bold;
+            color: $accent-color;
+            margin-right: 0.5rem;
+            flex-basis: 10%;
         }
 
         .entry-name {
-            flex-basis: 30% !important;
-            text-align: left !important;
+            flex-basis: 30%;
+            text-align: left;
         }
 
         .entry-country {
-            flex-basis: 30% !important;
-            text-align: left !important;
+            flex-basis: 30%;
+            text-align: left;
         }
 
         .entry-score {
-            font-weight: bold !important;
-            flex-basis: 15% !important;
-            text-align: right !important;
+            font-weight: bold;
+            flex-basis: 15%;
+            text-align: right;
         }
 
         .entry-time {
-            flex-basis: 15% !important;
-            text-align: right !important;
+            flex-basis: 15%;
+            text-align: right;
         }
     }
 }
 
 .game-nav {
-    background-color: rgba($primary-color, 0.8) !important;
-    padding: 0.75rem !important;
-    border-radius: 50px !important;
-    display: flex !important;
-    justify-content: space-around !important;
-    width: 100% !important;
-    max-width: 400px !important;
+    background-color: rgba($primary-color, 0.8);
+    padding: 0.75rem;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
 }
 
 .nav-button {
     @include button-style;
-    background-color: transparent !important;
-    color: $text-color !important;
-    padding: 0.5rem 0.75rem !important;
+    background-color: transparent;
+    color: $text-color;
+    padding: 0.5rem 0.75rem;
 
     &:hover {
-        background-color: rgba($accent-color, 0.2) !important;
+        background-color: rgba($accent-color, 0.2);
     }
 }
 
 .nav-icon {
-    width: 1.25rem !important;
-    height: 1.25rem !important;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .nav-label {
-    font-size: 0.8rem !important;
+    font-size: 0.8rem;
 }
 
 @media (max-width: 400px) {
     .game-title {
-        font-size: 2rem !important;
+        font-size: 2rem;
     }
 
     .holes-container {
-        gap: 0.25rem !important;
+        gap: 0.25rem;
     }
 
     .game-info {
-        flex-direction: column !important;
-        align-items: stretch !important;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .score,
     .misses,
     .time-left {
-        margin: 0.25rem 0 !important;
+        margin: 0.25rem 0;
     }
 
     .nav-button {
-        padding: 0.25rem 0.5rem !important;
+        padding: 0.25rem 0.5rem;
     }
 
     .nav-icon {
-        width: 1rem !important;
-        height: 1rem !important;
+        width: 1rem;
+        height: 1rem;
     }
 
     .nav-label {
-        font-size: 0.7rem !important;
+        font-size: 0.7rem;
     }
 
     .leaderboard-entry {
-        flex-wrap: wrap !important;
+        flex-wrap: wrap;
 
         .entry-rank,
         .entry-name,
         .entry-country,
         .entry-score,
         .entry-time {
-            flex-basis: auto !important;
-            margin-right: 0.5rem !important;
-            margin-bottom: 0.25rem !important;
+            flex-basis: auto;
+            margin-right: 0.5rem;
+            margin-bottom: 0.25rem;
         }
     }
 }
