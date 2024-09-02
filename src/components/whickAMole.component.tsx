@@ -184,6 +184,7 @@ const WhackAMole: React.FC = () => {
 
     const whackMole = (index: number) => {
         if (moles[index]) {
+            hitSoundRef.current?.play();
             setScore((prev) => prev + 1);
             hideMole(index);
             setHoleStates((prev) => {
@@ -198,8 +199,8 @@ const WhackAMole: React.FC = () => {
                 }, 300);
                 return newStates;
             });
-            hitSoundRef.current?.play();
         } else {
+            missSoundRef.current?.play();
             setMisses((prev) => prev + 1);
             setHoleStates((prev) => {
                 const newStates = [...prev];
@@ -213,7 +214,6 @@ const WhackAMole: React.FC = () => {
                 }, 300);
                 return newStates;
             });
-            missSoundRef.current?.play();
         }
     };
 
